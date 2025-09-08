@@ -1,0 +1,203 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trang Cá Nhân - Lê Việt Tiến</title>
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="./background.webm" as="video" type="video/webm">
+    <link rel="preload" href="avatar.jpg" as="image">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- External resources -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Orbitron:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    
+    <!-- Inline critical CSS -->
+    <style>
+      /* Critical CSS only - rest moved to external file */
+      :root {
+        --primary-color: #00f0ff;
+        --secondary-color: #ffeb3b;
+        --accent-color: #ff4081;
+        --dark-bg: rgba(0, 0, 0, 0.7);
+        --text-light: #ffffff;
+        --text-dark: #000000;
+        --card-bg: rgba(255, 255, 255, 0.1);
+        --transition: all 0.3s ease;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        background: black;
+        color: white;
+        font-family: "Poppins", sans-serif;
+        overflow-x: hidden;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+      }
+
+      #bgVideo {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        object-fit: cover;
+        z-index: -2;
+        pointer-events: none;
+      }
+
+      .video-fallback {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(45deg, #000000, #001a33);
+        z-index: -3;
+        display: none;
+      }
+
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 90%;
+        max-width: 500px;
+        text-align: center;
+        position: relative;
+        z-index: 1;
+        padding: 120px 10px 30px;
+        gap: 20px;
+      }
+    </style>
+    
+    <!-- Defer non-critical CSS -->
+    <link rel="stylesheet" href="styles.css" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="styles.css" /></noscript>
+</head>
+<body>
+    <video autoplay muted loop playsinline poster="poster.jpg" id="bgVideo">
+        <source src="./background.webm" type="video/webm">
+        <!-- <source src="./background.mp4" type="video/mp4"> -->
+    </video>
+    <div class="video-fallback" id="videoFallback"></div>
+ 
+    <div class="fps-counter">FPS: <span id="fps">0</span></div>
+
+    <!-- Reduced snow effect for performance -->
+    <div class="snow" id="snow"></div>
+    <div class="particles" id="particles"></div>
+
+    <div class="container">
+        <div class="avatar-section">
+            <div class="avatar-frame">
+                <img src="avatar.jpg" alt="avatar" class="avatar" width="180" height="180" />
+                <img src="frame.png" alt="border" class="avatar-border" />
+                <svg class="avatar-border" viewBox="0 0 100 100" aria-hidden="true">
+                    <circle cx="50" cy="50" r="48" stroke="url(#gradient)" stroke-width="4" 
+                            fill="none" stroke-dasharray="5,5">
+                        <defs>
+                            <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#00f0ff" />
+                                <stop offset="100%" stop-color="#ff4081" />
+                            </linearGradient>
+                        </defs>
+                    </circle>
+                </svg>
+            </div>
+            <h1 class="title">
+                Lê Việt Tiến
+                <span class="verified" aria-label="Verified"><i class="fas fa-check-circle"></i></span>
+            </h1>
+        </div>
+
+        <div class="social-icons">
+            <a href="https://www.facebook.com/share/1Bh9qgQ64B/" title="Facebook" target="_blank" rel="noopener">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" title="Instagram" target="_blank" rel="noopener">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" title="Twitter" target="_blank" rel="noopener">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" title="YouTube" target="_blank" rel="noopener">
+                <i class="fab fa-youtube"></i>
+            </a>
+            <a href="https://www.tiktok.com/@viettien1404?is_from_webapp=1&sender_device=pc" 
+               title="TikTok" target="_blank" rel="noopener">
+                <i class="fab fa-tiktok"></i>
+            </a>
+            <a href="#" title="GitHub" target="_blank" rel="noopener">
+                <i class="fab fa-github"></i>
+            </a>
+        </div>
+
+        <div class="info-card">
+            <div class="info">
+                <div class="info-item">
+                    <i class="fas fa-user" aria-hidden="true"></i>
+                    <span>Nam - 20 tuổi</span>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                    <span>Ninh Bình, Việt Nam</span>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-heart" aria-hidden="true"></i>
+                    <span>Độc thân</span>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-graduation-cap" aria-hidden="true"></i>
+                    <span>Đại học Hạ Long</span>
+                </div>
+            </div>
+            <div class="timer">
+                <i class="fas fa-clock" aria-hidden="true"></i>
+                <span id="time">00:00:00</span>
+            </div>
+        </div>
+
+        <div class="music-player">
+            <select class="music-select" id="musicSelect">
+                <option value="">-- Chọn nhạc --</option>
+                <option value="./noinaycoanh">Nơi Này Có Anh</option>
+                <option value="./hinhnhutathichnhau">Hình Như Ta Thích Nhau</option>
+                <option value="./motgiaythoingungtroi">Một Giây Thôi Ngừng Trôi</option>
+                <option value="./hoadienvi">Hoa Diên Vĩ</option>
+                <option value="./hoavosac">Hoa Vô Sắc</option>
+                <option value="./hoahaiduong">Hoa Hải Đường</option>
+            </select>
+            <div class="music-controls">
+                <button class="control-btn" id="playBtn" aria-label="Phát nhạc">
+                    <i class="fas fa-play"></i>
+                </button>
+                <button class="control-btn" id="muteBtn" aria-label="Tắt tiếng">
+                    <i class="fas fa-volume-up"></i>
+                </button>
+                <input type="range" id="volumeSlider" min="0" max="100" step="1" value="100" 
+                       aria-label="Điều chỉnh âm lượng">
+            </div>
+        </div>
+    </div>
+
+    <!-- Deferred JavaScript -->
+    <script src="script.js" defer></script>
+</body>
+</html>
